@@ -63,7 +63,7 @@ Steps
 
 1. Log onto 'lsp-dev'_.
 
-   .. _lsp-dev: https://lsst-lspdev.ncsa.illinois.edu/
+.. _lsp-dev: https://lsst-lspdev.ncsa.illinois.edu/
 
 2. On lsp-dev, open a terminal.
 
@@ -81,15 +81,15 @@ Steps
 
 9. Set up the repository by typing :command:`setup -k -r .`
 
-10. The `flake8` testing requires a file called :file:`setup.cfg` to be present in the top level of the repo. Put a template version of the `setup.cfg` in place by typing: :command:`curl -O https://raw.githubusercontent.com/lsst/templates/master/project_templates/stack_package/%7B%7Bcookiecutter.package_name%7D%7D/setup.cfg`.
+10. The ``flake8`` testing requires a file called :file:`setup.cfg` to be present in the top level of the repo. Put a template version of the ``setup.cfg`` in place by typing: :command:`curl -O https://raw.githubusercontent.com/lsst/templates/master/project_templates/stack_package/%7B%7Bcookiecutter.package_name%7D%7D/setup.cfg`.
 
-    Note: As of 10/25/2018, if 'W504' isn't included in the lists of tests to _ignore_ in :file:`setup.cfg`, then you should add it.
+    Note: As of 10/25/2018, if ``W504`` isn't included in the lists of tests to *ignore* in :file:`setup.cfg`, then you should add it.
 
 11. Is there a :file:`tests/` directory in the repo? If so, are there any Python tests in that directory? If either of these is not true, then create them. An example test that simply imports a module and then confirms that it imported is located `here: <https://github.com/lsst/ctrl_pool/blob/master/tests/test_import.py>`_. You can copy this one and edit as needed. Note that some repos only contain configs. For these, you may want to simply create a dummy test that asserts some simple math.
 
 12. If there is no :file:`Sconscript` file in :file:`tests/`, then add one by doing the following: :command:`cd tests ; curl -O https://raw.githubusercontent.com/lsst/templates/master/project_templates/stack_package/%7B%7Bcookiecutter.package_name%7D%7D/tests/SConscript ; cd ..`
 
-13. Make sure this :file:`SConscript` file contains a line that reads: `scripts.BasicSConscript.tests(pyList=[])` (scons needs to be told that it is allowed to discover files, and not just run flake8 on files in the :file:`tests/`` directory).
+13. Make sure this :file:`SConscript` file contains a line that reads: ``scripts.BasicSConscript.tests(pyList=[])`` (scons needs to be told that it is allowed to discover files, and not just run flake8 on files in the :file:`tests/` directory).
 
 14. Run the flake8 linting tests by typing :command:`scons` at the command line.
 
@@ -103,14 +103,14 @@ Steps
 
 19. Make a commit and check (at the url given in step 18) that travis runs. (Note: sometimes it needs a nudge. Do a "git commit --amend" and "git push --force" to wake travis up...)
 
-20. Require travis to run by going to `https://github.com/lsst/<repo_name>` and navigate to `Settings/Branches`.  Make sure both of these options are enabled:
+20. Require travis to run by going to ``https://github.com/lsst/<repo_name>`` and navigate to ``Settings/Branches``.  Make sure both of these options are enabled:
     * Require branches to be up to date before merging
     * Continuous Integration Travis/CI
     (Note: you need to have proper (admin) permissions to do this, or ask somebody who does to do it for you.)
 
 21. Run the ticket branch through Jenkins: First, go to `<https://ci.lsst.codes/>`_. On this page, search for "stack-os-matrix", then click `Run`. Enter the ticket branch and repo names of your repo, then start the Jenkins run. You will be invited to the `#dmj-stack-os-matrix` Slack channel (if you are not already in it), where you will be notified when the job completes.
 
-22. _If Jenkins successfully ran_, then push your changes and merge to master.
+22. *If Jenkins successfully ran*, then push your changes and merge to master. (If not, then fix whatever is causing Jenkins to fail before merging.)
 
 23. Change the Jira ticket status to "Done".
 
