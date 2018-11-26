@@ -61,7 +61,7 @@ In this technote we describe how to enable flake8 testing and Travis CI for exis
 Steps
 =====
 
-1. Log onto 'lsp-dev'_.
+1. Log onto `lsp-dev`_.
 
 .. _lsp-dev: https://lsst-lspdev.ncsa.illinois.edu/
 
